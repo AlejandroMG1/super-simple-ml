@@ -1,10 +1,10 @@
 import axios from "axios"
 import { MlProduct } from "../interfaces/mlProduct"
 
-export const searchProduct = async (query: string): Promise<MlProduct[]> => {
+export const searchProduct = async (query: string, offset?:number,limit?:number): Promise<MlProduct[]> => {
     const options = {
         method: 'GET',
-        url: `https://api.mercadolibre.com/sites/MCO/search?q=${query}`,
+        url: `https://api.mercadolibre.com/sites/MCO/search?q=${query}${offset ? `&offset=${offset}` : ''}${limit ? `&limit=${limit}` : ''}`,
         headers: { 'content-type': 'application/json' }
     }
 
